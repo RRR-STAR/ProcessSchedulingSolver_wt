@@ -55,7 +55,7 @@ RUN echo "/usr/local/lib" >> /etc/ld.so.conf.d/wt.conf && ldconfig
 RUN mkdir -p /wt_custom_startup && touch /wt_custom_startup/wt_config.xml
 
 # Create a basic wt_config.xml file
-RUN echo '<server><application-settings location="*"><session-management><dedicated-process><max-num-sessions>500</max-num-sessions></dedicated-process></session-management><theme>bootstrap5</theme><progressive-bootstrap>true</progressive-bootstrap><ajax-puzzle>true</ajax-puzzle><debug>false</debug><log-file></log-file><log-config></log-config><max-request-size>128</max-request-size><session-id-length>16</session-id-length></application-settings></server>' >> /wt_custom_startup/wt_config.xml
+RUN echo '<server><application-settings location="*"><session-management><multi-threaded/></session-management><theme>bootstrap5</theme><progressive-bootstrap>true</progressive-bootstrap><ajax-puzzle>true</ajax-puzzle><debug>false</debug><log-file></log-file><log-config></log-config><max-request-size>128</max-request-size><session-id-length>16</session-id-length></application-settings></server>' >> /wt_custom_startup/wt_config.xml
 
 # Set working directory for your application
 WORKDIR /app
