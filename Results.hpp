@@ -294,12 +294,16 @@ void ProcessSchedulingCalculator::displaySRTFResults(){
             currentShortestProcess->responseTime = cpuCycle - currentShortestProcess->arrivalTime;
             currentShortestProcess->started = true;
         }
-        // if next process remaining time is less that the current process remaining then,
-        // execution time is set to the difference between this process and next process
-        // so that this(current process) executes upto that process arrival
-        if (arrivedProcessIndex < totalProcesses  and  arrivedProcessIndex > 0)
-            executionTime = availableProcesses[arrivedProcessIndex]->arrivalTime - 
-                            availableProcesses[arrivedProcessIndex - 1]->arrivalTime;
+        // if next process remaining time is less than the current process remaining then,
+        // execution time is set to the difference between next process arrival and current cpu clock
+        // so that this(current process) executes upto next process arrival
+        if (arrivedProcessIndex < totalProcesses  and  arrivedProcessIndex > 0){
+            executionTime = availableProcesses[arrivedProcessIndex]->arrivalTime - cpuCycle;
+            // if the next process arrival is more than this process remainig 
+            if (executionTime > currentShortestProcess->remainingTime)
+                executionTime = currentShortestProcess->remainingTime;
+        }
+        // when all pocesses arrived there is no chance of premption
         else  executionTime = currentShortestProcess->remainingTime;
         
         cpuCycle += executionTime;
@@ -379,12 +383,16 @@ void ProcessSchedulingCalculator::displayPRPResults(){
             highestPriorityProcess->responseTime = cpuCycle - highestPriorityProcess->arrivalTime;
             highestPriorityProcess->started = true;
         }
-        // if next process priority is greater that the current process priority then,
-        // execution time is set to the difference between this process and next process
-        // so that this(current process) executes upto that process arrival
-        if (arrivedProcessIndex < totalProcesses  and  arrivedProcessIndex > 0)
-            executionTime = availableProcesses[arrivedProcessIndex]->arrivalTime - 
-                            availableProcesses[arrivedProcessIndex - 1]->arrivalTime;
+        // if next process remaining time is less than the current process remaining then,
+        // execution time is set to the difference between next process arrival and current cpu clock
+        // so that this(current process) executes upto next process arrival
+        if (arrivedProcessIndex < totalProcesses  and  arrivedProcessIndex > 0){
+            executionTime = availableProcesses[arrivedProcessIndex]->arrivalTime - cpuCycle;
+            // if the next process arrival is more than this process remainig 
+            if (executionTime > highestPriorityProcess->remainingTime)
+                executionTime = highestPriorityProcess->remainingTime;
+        }
+        // when all pocesses arrived there is no chance of premption
         else  executionTime = highestPriorityProcess->remainingTime;
         
         cpuCycle += executionTime;

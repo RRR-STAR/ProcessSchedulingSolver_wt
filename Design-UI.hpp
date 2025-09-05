@@ -48,14 +48,14 @@ void ProcessSchedulingCalculator::setupHeader(){
     headerSection->addNew<WBreak>();
     headerSection->addNew<WBreak>();
     
-    auto title = headerSection->addNew<WText>("CPU Scheduling Calculator");
+    auto title = headerSection->addNew<WText>("Process Scheduling Solver");
     title->setStyleClass("h1 text-primary mb-3"); // header text & style
     
     headerSection->addNew<WBreak>();
     headerSection->addNew<WBreak>();
     
     auto subtitle = headerSection->addNew<WText>(
-        "Calculate waiting time, turnaround time, and visualize Gantt charts for various CPU scheduling algorithms");
+        "Calculate waiting time, turnaround time, and visualize Gantt charts for various process scheduling algorithms");
     subtitle->setStyleClass("lead text-muted"); // subtitle text & style
     
     headerSection->addNew<WBreak>();
@@ -64,7 +64,7 @@ void ProcessSchedulingCalculator::setupHeader(){
     auto navContainer = headerSection->addNew<WContainerWidget>();
     navContainer->setStyleClass("nav nav-tabs justify-content-center mt-4");
     
-    auto algorithmInfo = headerSection->addNew<WText>("Supports: FCFS, SJF, Round Robin, and Priority scheduling");
+    auto algorithmInfo = headerSection->addNew<WText>("Supports: FCFS, SJF, SRTF, Round Robin, Priority and IO scheduling");
     algorithmInfo->setStyleClass("small text-info mt-2");   // sub-sub-heading text & style
     
     headerSection->addNew<WBreak>();
@@ -81,11 +81,11 @@ void ProcessSchedulingCalculator::setupFooter(){
     auto footerSection = footerContainer_->addNew<WContainerWidget>();
     footerSection->setStyleClass("col-12 text-center");
     
-    auto footerText = footerSection->addNew<WText>("CPU Scheduling Calculator - Built with Wt Framework. ");
+    auto footerText = footerSection->addNew<WText>("Process Scheduling Solver - Built with Wt Framework. ");
     footerText->setStyleClass("text-muted small");       // footer text & text style
     
     auto footerText2 = footerSection->addNew<WText>(     // next footer text & style.
-        "This tool helps visualize and analyze various CPU scheduling algorithms used in operating systems. ");
+        "This tool helps visualize and analyze various process scheduling algorithms used in operating systems. ");
     footerText2->setStyleClass("text-muted small mt-2"); // mentioned separately for responsiveness
     
     footerSection->addNew<WBreak>();

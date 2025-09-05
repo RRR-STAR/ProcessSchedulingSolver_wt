@@ -6,7 +6,7 @@ ProcessSchedulingCalculator::ProcessSchedulingCalculator(const Wt::WEnvironment 
     : WApplication(env), currentProcessCount_(0), selectedAlgorithm_("FCFS"), timeQuantum_(2.0){
     
     // Set application title
-    setTitle("CPU Scheduling Calculator");
+    setTitle("Process Scheduling Solver");
     
     // Create main interface
     createInterface();
